@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ productName }}
+{% endblock %}
+
+{% block content %}
+    <!-- 广告横幅 -->
+    <div class="container-fluid">
+        <div class="row">
+            <img class="img-responsive model-img" src="{% static 'img/products.jpg' %}">
+        </div>
+    </div>
+    <!-- 主体内容 -->
+    <div class="container">
+        <div class="row row-3">
+            <!-- 侧边导航栏 -->
+            <div class="col-md-3">
+                <div class="model-title">
+                    产品中心
+                </div>
+                <div class="model-list">
+                    <ul class="list-group">
+                        <li class="list-group-item" id="robot">
+                            <a href="{% url 'productsApp:products' 'robot' %}">家用机器人</a>
+                        </li>
+                        <li class="list-group-item" id="monitor">
+                            <a href="{% url 'productsApp:products' 'monitor' %}">智能监控</a>
+                        </li>
+                        <li class="list-group-item" id="face">
+                            <a href="{% url 'productsApp:products' 'face' %}">人脸识别解决方案</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 说明文字和图片 -->
+            <div class="col-md-9">
+                <div class="model-details-title">
+                    {{ productName }}
+                </div>
+                <!-- 此处填入产品列表内容 -->
+                <div class="model-details">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
