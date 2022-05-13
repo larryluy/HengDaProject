@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Product
 
 def products(request, productName):
     submenu = productName
@@ -9,12 +10,12 @@ def products(request, productName):
     else:
         productName = '人脸识别解决方案'
 
+    productList = Product.objects.all().filter(productType=productName).order_by('-publishDate')
+
     return render(
         request, 'productList.html', {
             'active_menu': 'products',
             'sub_menu': submenu,
             'productName': productName,
+            'productList': productList,
         })
-
-
-# add comment test

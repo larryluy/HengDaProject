@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    <link href="{% static 'css/products.css' %}" rel="stylesheet">
     <!-- 广告横幅 -->
     <div class="container-fluid">
         <div class="row">
@@ -41,6 +42,26 @@
                 </div>
                 <!-- 此处填入产品列表内容 -->
                 <div class="model-details">
+                    {% for product in productList %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {% for img in product.productImgs.all %}
+                                    {% if forloop.first %}
+                                        <a href="#" class="thumbnail row-4"><img class="img-responsive" src="{{ img.photo.url }}"></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-6">
+                                <h3>{{ product.title|truncatechars:'20' }}</h3>
+                                <p>{{ product.description|truncatechars:'150'|linebreaks }}</p>
+                                <div class="thumbnail row-5">
+                                    <div class="caption">
+                                        <a href="#" class="btn btn-primary" role="button">查看详情</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
