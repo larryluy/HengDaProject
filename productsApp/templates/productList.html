@@ -62,6 +62,36 @@
                             </div>
                         </div>
                     {% endfor %}
+
+                    {% if pageData %}
+                        <div class="paging">
+                            <ul id="pages" class="pagination pagination-sm pagination-xs">
+                                {% if pageData.first %}
+                                <li><a href="?page=1">1</a></li>
+                                {% endif %}
+                                {% if pageData.left %}
+                                {% if pageData.left_has_more %}
+                                <li><span>...</span></li>
+                                {% endif %}
+                                {% for i in pageData.left %}
+                                <li><a href="?page={{i}}">{{i}}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                                <li class="active"><a href="?page={{pageData.page}}">{{pageData.page}}</a></li>
+                                {% if pageData.right %}
+                                {% for i in pageData.right %}
+                                <li><a href="?page={{i}}">{{i}}</a></li>
+                                {% endfor %}
+                                {% if pageData.right_has_more %}
+                                <li><span>...</span></li>
+                                {% endif %}
+                                {% endif %}
+                                {% if pageData.last %}
+                                <li><a href="?page={{pageData.total_pages}}">{{pageData.total_pages}}</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

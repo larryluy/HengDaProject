@@ -5,3 +5,12 @@
 .model-details .row-5 {
     border: none;
 }
+
+.paging {
+    text-align: center;
+}
+
+.pagination .active a {
+    background-color: #005197;
+    border-color: #005197;
+}
