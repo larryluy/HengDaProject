@@ -47,7 +47,7 @@
                             <div class="col-md-6">
                                 {% for img in product.productImgs.all %}
                                     {% if forloop.first %}
-                                        <a href="#" class="thumbnail row-4"><img class="img-responsive" src="{{ img.photo.url }}"></a>
+                                        <a href="{% url 'productsApp:productDetail' product.id %}" class="thumbnail row-4"><img class="img-responsive" src="{{ img.photo.url }}"></a>
                                     {% endif %}
                                 {% endfor %}
                             </div>
@@ -56,7 +56,7 @@
                                 <p>{{ product.description|truncatechars:'150'|linebreaks }}</p>
                                 <div class="thumbnail row-5">
                                     <div class="caption">
-                                        <a href="#" class="btn btn-primary" role="button">查看详情</a>
+                                        <a href="{% url 'productsApp:productDetail' product.id %}" class="btn btn-primary" role="button">查看详情</a>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404
 
 def products(request, productName):
     submenu = productName
@@ -70,3 +71,12 @@ def products(request, productName):
             'productList': productList,
             'pageData': pageData,
         })
+
+def productDetail(request, id):
+    product = get_object_or_404(Product, id=id)
+    product.views += 1
+    product.save()
+    return render(request, 'productDetail.html', {
+        'active_menu': 'products',
+        'product': product,
+    })

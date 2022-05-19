@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'productsApp',
     'serviceApp',
     'scienceApp',
+    'DjangoUeditor', #添加富文本应用
 ]
 
 MIDDLEWARE = [
